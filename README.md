@@ -10,11 +10,13 @@ $> mvn clean package jetty:run
 ### Test
 
 You should see the Jetty startup message:
+```
  [...]
  2014-06-06 19:51:22.555:INFO:oejs.ServerConnector:main: Started ServerConnector@7ade9f78{HTTP/1.1}{0.0.0.0:8080}
  2014-06-06 19:51:22.556:INFO:oejs.Server:main: Started @8006ms
  [INFO] Started Jetty Server
  [INFO] Starting scanner at interval of 5 seconds.
+```
 
 Now you can run tests. Optionally, install the xmllint command line tool, for pretty printing the xml output
 
