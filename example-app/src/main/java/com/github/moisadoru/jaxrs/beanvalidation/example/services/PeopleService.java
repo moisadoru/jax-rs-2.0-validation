@@ -1,4 +1,4 @@
-package com.example.services;
+package com.github.moisadoru.jaxrs.beanvalidation.example.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,9 +7,9 @@ import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.stereotype.Service;
 
-import com.example.exceptions.PersonAlreadyExistsException;
-import com.example.exceptions.PersonNotFoundException;
-import com.example.model.Person;
+import com.github.moisadoru.jaxrs.beanvalidation.example.exceptions.PersonAlreadyExistsException;
+import com.github.moisadoru.jaxrs.beanvalidation.example.exceptions.PersonNotFoundException;
+import com.github.moisadoru.jaxrs.beanvalidation.example.model.Person;
 
 @Service
 public class PeopleService {

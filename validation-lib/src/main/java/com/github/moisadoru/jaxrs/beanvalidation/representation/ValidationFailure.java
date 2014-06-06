@@ -1,6 +1,4 @@
-package com.example.validation;
-
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+package com.github.moisadoru.jaxrs.beanvalidation.representation;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Path;
@@ -14,7 +12,6 @@ import java.util.List;
  */
 @XmlRootElement(name = "error")
 @XmlType(propOrder = {"type", "message", "moreInfo", "errors"})
-@JsonPropertyOrder({"type", "message", "more_info", "errors"})
 public class ValidationFailure implements Serializable {
 
     private static final long serialVersionUID = 1625992821977268269L;

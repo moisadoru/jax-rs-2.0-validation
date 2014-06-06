@@ -1,4 +1,4 @@
-package com.example.validation;
+package com.github.moisadoru.jaxrs.beanvalidation.representation;
 
 /**
 * Created by tmoisa on 6/6/14.

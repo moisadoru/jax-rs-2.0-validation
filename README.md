@@ -4,10 +4,15 @@ This is a prototype of a Java JAX-RS service implemented with CXF/Spring and Bea
 
 ### Build and run:
 
+If you run it for the first time:
 ```bash
-$> mvn clean package jetty:run
+$> mvn clean install && mvn -pl example-app jetty:run
 ```
 
+Subsequent times, if you did not modify anything, it's enough to run:
+```bash
+$> mvn -pl example-app jetty:run
+```
 ### Test
 
 You should see the Jetty startup message:

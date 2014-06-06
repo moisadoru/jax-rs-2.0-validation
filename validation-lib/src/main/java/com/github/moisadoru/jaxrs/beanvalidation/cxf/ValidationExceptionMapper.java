@@ -1,9 +1,10 @@
-package com.example.validation;
+package com.github.moisadoru.jaxrs.beanvalidation.cxf;
 
 /**
- * Created by tmoisa on 6/6/14.
+ * Created by moisadoru on 6/6/14.
  */
 
+import com.github.moisadoru.jaxrs.beanvalidation.representation.ValidationFailure;
 import org.apache.cxf.validation.ResponseConstraintViolationException;
 
 import javax.validation.ConstraintViolation;

@@ -1,4 +1,4 @@
-package com.example.rs;
+package com.github.moisadoru.jaxrs.beanvalidation.example.rs;
 
 import java.util.Collection;
 
@@ -16,8 +16,8 @@ import org.apache.cxf.annotations.SchemaValidation;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
-import com.example.model.Person;
-import com.example.services.PeopleService;
+import com.github.moisadoru.jaxrs.beanvalidation.example.model.Person;
+import com.github.moisadoru.jaxrs.beanvalidation.example.services.PeopleService;
 
 @Path("/people")
 @SchemaValidation
