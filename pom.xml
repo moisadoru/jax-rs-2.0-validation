@@ -8,6 +8,18 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Test JAX-RS 2.0 Application with Bean Validation - Parent</name>
+    <description><![CDATA[
+        This is a fork of https://github.com/reta/jax-rs-2.0-validation. A multi-module Maven project that shows how
+        it's possible to use Bean Validation (via Hibernate Validator) with JAX-RS (via Apache CXF and Spring).
+    ]]></description>
+
+    <developers>
+        <developer>
+            <name>Doru Moisa</name>
+            <email>moisadoru@gmail.com</email>
+            <timezone>EEST</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
