@@ -44,7 +44,7 @@ $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' 
 ```xml
 <?xml version="1.0"?>
 <person>
-  <email>a3@b.com</email>
+  <email>a2@b.com</email>
   <firstName>Doe</firstName>
   <lastName>John</lastName>
 </person>
