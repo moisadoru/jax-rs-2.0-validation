@@ -1,7 +1,6 @@
 ## Apache CXF and Bean Validation 1.1
 
-[![Build Status](https://drone.io/github.com/moisadoru/jax-rs-2.0-validation/status.png)](https://drone.io/github.com/moisadoru/jax-rs-2.0-validation/latest) [![Build Status](https://travis-ci.org/moisadoru/jax-rs-2.0-validation.svg?branch=master)](https://travis-ci.org/moisadoru/jax-rs-2.0-validation)
-
+[![Build Status](https://drone.io/github.com/moisadoru/jax-rs-2.0-validation/status.png)](https://drone.io/github.com/moisadoru/jax-rs-2.0-validation/latest)
 This is a prototype of a Java JAX-RS service implemented with CXF/Spring and Bean Validation (via Hibernate Validator).
 
 ### Build and run:
