@@ -19,7 +19,7 @@ public class PeopleService {
     	return new ArrayList< Person >( persons.values() )
     	    .subList( 0, Math.min( count, persons.size() ) );
     }
-    
+
     public Person getByEmail( final String email ) {
         final Person person = persons.get( email );
         
@@ -34,15 +34,23 @@ public class PeopleService {
         final Person person = new Person( email );
         person.setFirstName( firstName );
         person.setLastName( lastName );
-                
+
         if( persons.putIfAbsent( email, person ) != null ) {
             throw new PersonAlreadyExistsException( email );
         }
-        
+
         return person;
     }
 
-	public void clear() {
+
+    public Person addPerson(Person person) {
+        if( persons.putIfAbsent( person.getEmail(), person ) != null ) {
+            throw new PersonAlreadyExistsException( person.getEmail() );
+        }
+        return person;
+    }
+
+    public void clear() {
 		persons.clear();		
 	}
 }

@@ -6,32 +6,27 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import org.apache.cxf.annotations.SchemaValidation;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
 import com.example.model.Person;
 import com.example.services.PeopleService;
 
-@Path( "/people" ) 
+@Path("/people")
+@SchemaValidation
 public class PeopleRestService {
     @Inject private PeopleService peopleService;
     
     @Produces( { MediaType.APPLICATION_JSON } )
     @GET
-    public @Valid Collection< Person > getPeople( 
+    public @Valid Collection< Person > getPeople(
     		@Min( 1 ) @QueryParam( "count" ) @DefaultValue( "1" ) final int count ) {
         return peopleService.getPeople( count );
     }
@@ -47,13 +42,23 @@ public class PeopleRestService {
     @Produces( { MediaType.APPLICATION_JSON  } )
     @POST
     public Response addPerson( @Context final UriInfo uriInfo,
-            @NotNull @Length( min = 5, max = 255 ) @FormParam( "email" ) final String email, 
-            @FormParam( "firstName" ) final String firstName, 
-            @FormParam( "lastName" ) final String lastName ) {        
+                               @NotNull @Email @Length(min=5, max=255) @FormParam( "email" ) final String email,
+                               @FormParam( "firstName" ) final String firstName,
+                               @FormParam( "lastName" ) final String lastName )
+    {
         final Person person = peopleService.addPerson( email, firstName, lastName );
         return Response.created( uriInfo.getRequestUriBuilder().path( email ).build() ).entity( person ).build();
     }
-    
+
+    @POST
+    @Valid
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Person addPerson(@Valid Person person)
+    {
+        return peopleService.addPerson(person);
+    }
+
     @DELETE
     public Response deleteAll() {
 		peopleService.clear();

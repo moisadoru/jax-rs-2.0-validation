@@ -1,13 +1,27 @@
 package com.example.model;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.cxf.jaxrs.ext.xml.XMLName;
 import org.hibernate.validator.constraints.Email;
 
+@XmlRootElement(name="person")
+//@XMLName("http://{person}person")
 public class Person {
-    @NotNull @Email private String email;
-    @NotNull private String firstName;
-    @NotNull private String lastName;
+    @NotNull
+    @Email
+    private String email;
+
+    @NotNull
+    @Size(min = 2, max = 128)
+    private String firstName;
+
+    @NotNull
+    @Pattern(regexp = "^[a-zA-Z]{2,}$")
+    private String lastName;
         
     public Person() {
     }
