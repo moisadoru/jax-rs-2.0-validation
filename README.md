@@ -132,4 +132,4 @@ $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' 
 ```
 
 ### Notes
-[Original readme](OLD-README.md)
+[Original project](https://github.com/reta/jax-rs-2.0-validation)
