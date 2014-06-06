@@ -80,7 +80,7 @@ $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/json'
 ```
  * When *email* is invalid, and *lastName* is missing:
 ```bash
-curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
+$> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
  -H 'Content-Type: application/json' -X POST \
  -d '{"email":"invalid","firstName":"Bla"}' | xmllint --format -
 ```
