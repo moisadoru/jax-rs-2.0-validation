@@ -22,27 +22,26 @@ You should see the Jetty startup message:
 Now you can run tests. Now it would be a good idea to install curl if you don't have it already. Optionally, install the xmllint command line tool, for pretty printing the xml output (for debian, install libxml2-utils).
 
 #### Successful requests:
-Command: ```bash
+ 1. Add one person:
+```bash
 $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/json' \
  -H 'Content-Type: application/json' -X POST \
  -d '{"email":"a1@b.com", "firstName": "Doe", "lastName": "John"}'
 ```
-
-Result: ```json
+```json
 {
   "email" : "a1@b.com",
   "firstName" : "Doe",
   "lastName" : "John"
 }
 ```
-
-Command: ```bash
+1. Add another person:
+```bash
 $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
  -H 'Content-Type: application/json' -X POST \
  -d '{"email":"a2@b.com", "firstName": "Doe", "lastName": "John"}' | xmllint --format -
 ```
-
-Result: ```xml
+```xml
 <?xml version="1.0"?>
 <person>
   <email>a3@b.com</email>
@@ -53,13 +52,13 @@ Result: ```xml
 
 #### Error responses:
 
-Command: ```bash
+1. When all the fields are missing:
+```bash
 $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/json' \
  -H 'Content-Type: application/json' -X POST \
  -d '{}'
 ```
-
-Result: ```json
+```json
 {
   "type" : "VALIDATION_FAILED",
   "message" : "The input data is invalid",
@@ -79,14 +78,13 @@ Result: ```json
   "moreInfo" : "https://wiki.1and1.org/ROM/BIMS"
 }
 ```
-
-Command: ```bash
-$> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
+2. When *email* is invalid, and *lastName* is missing:
+```bash
+curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
  -H 'Content-Type: application/json' -X POST \
- -d '{}' | xmllint --format -
+ -d '{"email":"invalid","firstName":"Bla"}' | xmllint --format -
 ```
-
-Result: ```xml
+```xml
 <?xml version="1.0"?>
 <error>
   <type>VALIDATION_FAILED</type>
@@ -99,26 +97,20 @@ Result: ```xml
       <field>lastName</field>
     </error>
     <error>
-      <type>NOTNULL</type>
-      <message>may not be null</message>
+      <type>EMAIL</type>
+      <message>not a well-formed email address</message>
       <field>email</field>
-    </error>
-    <error>
-      <type>NOTNULL</type>
-      <message>may not be null</message>
-      <field>firstName</field>
     </error>
   </errors>
 </error>
 ```
-
-Command: ```bash
+1. Property *lastName* too short:
+```bash
 $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
  -H 'Content-Type: application/json' -X POST \
  -d '{"email":"a3@b.com", "firstName": "Doe", "lastName": "J"}' | xmllint --format -
 ```
-
-Result: ```xml
+```xml
 <?xml version="1.0"?>
 <error>
   <type>VALIDATION_FAILED</type>
