@@ -25,7 +25,7 @@ public class ValidationExceptionMapper implements ExceptionMapper<ValidationExce
 
         vf.setType("VALIDATION_FAILED");
         vf.setMessage("The input data is invalid");
-        vf.setMoreInfo("https://wiki.1and1.org/ROM/BIMS");
+        vf.setMoreInfo("https://example.com/documentation/validation");
 
         for (final ConstraintViolation<?> violation : constraint.getConstraintViolations()) {
             vf.add(violation);
