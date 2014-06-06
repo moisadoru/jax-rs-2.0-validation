@@ -2,7 +2,6 @@ package com.github.moisadoru.jaxrs.beanvalidation.example.rs;
 
 import java.util.Collection;
 
-import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -18,11 +17,13 @@ import org.hibernate.validator.constraints.Length;
 
 import com.github.moisadoru.jaxrs.beanvalidation.example.model.Person;
 import com.github.moisadoru.jaxrs.beanvalidation.example.services.PeopleService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Path("/people")
 @SchemaValidation
 public class PeopleRestService {
-    @Inject private PeopleService peopleService;
+    @Autowired
+    private PeopleService peopleService;
     
     @Produces( { MediaType.APPLICATION_JSON } )
     @GET
