@@ -22,7 +22,7 @@ You should see the Jetty startup message:
 Now you can run tests. Now it would be a good idea to install curl if you don't have it already. Optionally, install the xmllint command line tool, for pretty printing the xml output (for debian, install libxml2-utils).
 
 #### Successful requests:
- 1. Add one person:
+ * Add one person:
 ```bash
 $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/json' \
  -H 'Content-Type: application/json' -X POST \
@@ -35,7 +35,7 @@ $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/json'
   "lastName" : "John"
 }
 ```
-1. Add another person:
+ * Add another person:
 ```bash
 $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
  -H 'Content-Type: application/json' -X POST \
@@ -52,7 +52,7 @@ $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' 
 
 #### Error responses:
 
-1. When all the fields are missing:
+ * When all the fields are missing:
 ```bash
 $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/json' \
  -H 'Content-Type: application/json' -X POST \
@@ -78,7 +78,7 @@ $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/json'
   "moreInfo" : "https://wiki.1and1.org/ROM/BIMS"
 }
 ```
-2. When *email* is invalid, and *lastName* is missing:
+ * When *email* is invalid, and *lastName* is missing:
 ```bash
 curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
  -H 'Content-Type: application/json' -X POST \
@@ -104,7 +104,7 @@ curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
   </errors>
 </error>
 ```
-1. Property *lastName* too short:
+ * Property *lastName* too short:
 ```bash
 $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/xml' \
  -H 'Content-Type: application/json' -X POST \
