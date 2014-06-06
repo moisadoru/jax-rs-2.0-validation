@@ -75,7 +75,7 @@ $> curl -s 'http://localhost:8080/rest/api/people' -H 'Accept: application/json'
     "message" : "may not be null",
     "field" : "email"
   } ],
-  "moreInfo" : "https://wiki.1and1.org/ROM/BIMS"
+  "moreInfo" : "https://example.com/documentation/validation"
 }
 ```
  * When *email* is invalid, and *lastName* is missing:
